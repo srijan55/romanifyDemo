@@ -22,7 +22,7 @@
 
       if (response.ok) {
         const data = await response.json();
-        document.getElementById('result').innerText = `Character count: ${data.count}`;
+        document.getElementById('result').innerText = `Character count: ${data.romanized_text}`;
       } else {
         document.getElementById('result').innerText = 'Error contacting the API.';
       }
