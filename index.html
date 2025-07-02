@@ -13,10 +13,11 @@
     async function countCharacters() {
       const text = document.getElementById('inputText').value;
       try{
-      const response = await fetch('https://flasktest-gd3c.onrender.com/count', {
+      const response = await fetch('https://srijan55.pythonanywhere.com/romanize', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text })
+        // Send the text as text property in the body and set the language to 'en'
+        body: JSON.stringify({ text: text, lcode: 'hin' })
       });
 
       if (response.ok) {
