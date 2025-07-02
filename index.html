@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Character Counter</title>
+  <title>हिन्दी से Roman </title>
 </head>
 <body>
-  <h1>Character Counter</h1>
+  <h1>हिन्दी से Roman लिप्यांतराण </h1>
   <textarea id="inputText" rows="4" cols="50" placeholder="Type something..."></textarea><br>
-  <button onclick="countCharacters()">Count Characters</button>
+  <button onclick="countCharacters()">Roman में परिवर्तित करें </button>
   <p id="result"></p>
+  <textarea id="outputText" rows="4" cols="50" placeholder="Romanized text will appear here..." readonly></textarea><br>
 
   <script>
     async function countCharacters() {
@@ -22,8 +23,11 @@
 
       if (response.ok) {
         const data = await response.json();
-        document.getElementById('result').innerText = `Character count: ${data.romanized_text}`;
+        document.getElementById('result').innerText = `Roman text `;
+        document.getElementById('outputText').value = data.romanized_text;
       } else {
+        const errorData = await response.json();
+        console.error('Error:', errorData);
         document.getElementById('result').innerText = 'Error contacting the API.';
       }
       } catch (error) {
